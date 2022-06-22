@@ -178,7 +178,7 @@ public class UsuarioController {
             }
             i++;
         }
-        
+
         return user;
 
     }
