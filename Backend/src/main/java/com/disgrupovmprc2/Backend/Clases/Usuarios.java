@@ -27,10 +27,6 @@ public class Usuarios {
     @JsonProperty("email")
     private String email;
 
-    private Usuarios(){
-
-    }
-
     public Usuarios(int id, String Nombre, String Departamento, String Ubicacion, int telefono, String email){
         this.id = id;
         this.Nombre = Nombre;

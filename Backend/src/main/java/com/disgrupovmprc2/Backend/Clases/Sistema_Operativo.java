@@ -14,9 +14,6 @@ public class Sistema_Operativo {
     @JsonProperty("versionSO")
     public String versionSO;
 
-    private Sistema_Operativo(){
-
-    }
 
     public Sistema_Operativo(String nombreSO, String versionSO){
         this.nombreSO = nombreSO;

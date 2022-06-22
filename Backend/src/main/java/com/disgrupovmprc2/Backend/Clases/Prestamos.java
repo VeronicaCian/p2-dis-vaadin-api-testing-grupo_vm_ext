@@ -28,10 +28,6 @@ public class Prestamos {
     @JsonProperty("Comentarios")
     private String Comentarios;
 
-
-    private Prestamos(){
-
-    }
     public Prestamos(int id, int Usuario_Id, int Equipo_Id,String Fecha_Inicio_Prestamo, String Fecha_Fin_Prestamo, String Fecha_Real_Dev, String Comentarios) {
         this.id = id;
         this.Usuario_Id = Usuario_Id;

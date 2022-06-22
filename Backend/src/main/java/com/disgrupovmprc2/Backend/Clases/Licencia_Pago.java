@@ -17,10 +17,6 @@ public class Licencia_Pago {
     @JsonProperty("TipoSP")
     public String TipoSP;
 
-    private Licencia_Pago(){
-
-    }
-
     public Licencia_Pago(String nombreSP, String versionSP,String tipoSP){
         this.VersionSP = versionSP;
         this.NombreSP = nombreSP;

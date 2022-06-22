@@ -14,11 +14,6 @@ public class Licencia_Libre {
     public String VersionSL;
 
 
-
-    private Licencia_Libre(){
-
-    }
-
     public Licencia_Libre(String nombreSL, String versionSL){
         this.VersionSL = versionSL;
         this.NombreSL = nombreSL;

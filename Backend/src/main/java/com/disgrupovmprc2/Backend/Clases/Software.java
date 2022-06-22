@@ -13,10 +13,6 @@ public class Software {
     @JsonProperty("Licencia_Libre")
     public Licencia_Libre Licencia_Libre;
 
-    private Software(){
-
-    }
-
     public Software(Licencia_Pago licenciapago, Licencia_Libre licencialibre){
         this.Licencia_Libre = licencialibre;
         this.Licencia_Pago = licenciapago;
