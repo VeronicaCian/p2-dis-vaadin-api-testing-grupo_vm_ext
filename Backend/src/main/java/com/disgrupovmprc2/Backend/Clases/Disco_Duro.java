@@ -11,9 +11,6 @@ public class Disco_Duro {
     @JsonProperty("capacidad")
     private String capacidad;
 
-    private Disco_Duro(){
-
-    }
 
     public Disco_Duro(String tipodisco, String capacidad){
         this.capacidad = capacidad;

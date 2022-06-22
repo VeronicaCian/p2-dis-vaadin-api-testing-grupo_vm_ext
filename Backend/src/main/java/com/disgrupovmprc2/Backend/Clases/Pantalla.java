@@ -12,10 +12,6 @@ public class Pantalla {
     @JsonProperty("Resolucion")
     public String Resolucion;
 
-    private  Pantalla(){
-
-    }
-
     public  Pantalla (int diagonal, String resolucion){
         this.Diagonal = diagonal;
         this.Resolucion = resolucion;

@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Hardware {
 
     @JsonProperty("Procesador")
-    public String   Procesador;
+    public String Procesador;
 
     @JsonProperty("Memoria")
     public double Memoria;
@@ -19,9 +19,6 @@ public class Hardware {
     @JsonProperty("Pantalla")
     public Pantalla Pantalla;
 
-    private Hardware(){
-
-    }
 
     public Hardware(String procesador, double memoria, Disco_Duro discoduro, Pantalla pantalla){
         this.Pantalla = pantalla;

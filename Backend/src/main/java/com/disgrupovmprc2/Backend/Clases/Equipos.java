@@ -11,7 +11,7 @@ public class Equipos {
     //atributos de equipos con sus respectivas llamadas a otras clases
 
     @JsonProperty("id_equipo")
-    private int id_equipo;
+    public int id_equipo;
 
     @JsonProperty("Tipo")
     private String Tipo;
@@ -31,9 +31,6 @@ public class Equipos {
     @JsonProperty("Software")
     private Software Software;
 
-    private Equipos(){
-
-    }
 
     public Equipos(int id_equipo,String Tipo, String Marca, String Uso, Sistema_Operativo Sistema_operativo, Hardware Hardware, Software Software){
         this.id_equipo = id_equipo;
