@@ -33,7 +33,7 @@ public class EquiposController {
         return equipos;
 
     }
-    
+
     //para buscar por id cojo el ide del elemento encontrado
     @GetMapping(value = "/equipos/{id}")
     public Equipos buscarEquipoID (@PathVariable int id) throws IOException {
