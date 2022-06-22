@@ -117,5 +117,28 @@ public class PrestamosController {
         return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 
+    //Para buscar por id selecciono el id del elemento encontrado
 
+    @GetMapping(value = "/prestamos/{id}")
+    public Prestamos buscarPrestamoId (@PathVariable int id) throws IOException{
+
+        Boolean encontrado = false;
+        Prestamos user = null;
+        int identificador = id;
+
+        ArrayList<Prestamos> listaprestamos = utils.lecturaJSONPrestamos();
+
+        int i = 0;
+        while(!encontrado && i < listaprestamos.size()){
+            Prestamos u = listaprestamos.get(i);
+            if(identificador == u.getId()){
+                encontrado = true;
+                user = u;
+            }
+            i++;
+        }
+
+        return user;
+
+    }
 }
