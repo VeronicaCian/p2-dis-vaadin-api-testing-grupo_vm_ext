@@ -73,6 +73,49 @@ public class PrestamosController {
         return new ResponseEntity(HttpStatus.OK);
 
     }
-    
+    //Controlador PUT para modificar un objeto del Json
+
+    @PutMapping(path = "/prestamos",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+
+    public ResponseEntity modifyPrestamo (@RequestBody Prestamos prestamoModificado) throws IOException {
+
+        ArrayList<Prestamos> listamodified = utils.lecturaJSONPrestamos();
+
+
+        int id = prestamoModificado.getId();
+
+        for (Prestamos m : listamodified) {
+            if(m.getId()==id){
+                m.setUsuario_Id(prestamoModificado.getUsuario_Id());
+                m.setFecha_Inicio_Prestamo(prestamoModificado.getFecha_Inicio_Prestamo());
+                m.setFecha_Fin_Prestamo(prestamoModificado.getFecha_Fin_Prestamo());
+                m.setFecha_Real_Dev(prestamoModificado.getFecha_Real_Dev());
+                m.setComentarios(prestamoModificado.getComentarios());
+            }
+        }
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();                 //Hacemos que aparezca bonito en vez de en una linea
+        FileWriter writer = null;                                                  //Inicializamos el filewriter
+        String archivo = "Prestamos.json";
+
+        try{
+            writer = new FileWriter(archivo);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        gson.toJson(listamodified,writer);
+
+        try {
+            writer.close();
+        } catch (IOException e2) {
+            e2.printStackTrace();
+        }
+
+        return new ResponseEntity(HttpStatus.ACCEPTED);
+    }
+
 
 }
