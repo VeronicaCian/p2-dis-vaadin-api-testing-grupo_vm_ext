@@ -35,5 +35,48 @@ public class UsuarioController {
         return usuarios;
 
     }
-    
+
+    @PutMapping(path = "/usuario",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity modifyUsuario (@RequestBody Usuarios usuariomodificado) throws IOException {
+
+
+        ArrayList<Usuarios> listamodified = utils.lecturaJSONUsuarios();
+
+
+        int id = usuariomodificado.getId();
+
+        for (Usuarios user : listamodified) {
+            if(user.getId()==id){
+                user.setNombre(usuariomodificado.getNombre());
+                user.setDepartamento(usuariomodificado.getDepartamento());
+                user.setUbicacion(usuariomodificado.getUbicacion());
+                user.setTelefono(usuariomodificado.getTelefono());
+                user.setEmail(usuariomodificado.getEmail());
+            }
+        }
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create(); //hacemeos que aparezca bonito en vez de en una linea
+        FileWriter writer = null;                                   //inicializamos el filewriter
+        String archivo = "Usuarios.json";
+
+        try{
+            writer = new FileWriter(archivo);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        gson.toJson(listamodified,writer);
+
+        try {
+            writer.close();
+        } catch (IOException e2) {
+            e2.printStackTrace();
+        }
+
+        return new ResponseEntity(HttpStatus.ACCEPTED);
+
+    }
+
 }
