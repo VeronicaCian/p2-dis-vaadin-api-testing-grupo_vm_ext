@@ -33,4 +33,29 @@ public class EquiposController {
         return equipos;
 
     }
+    
+    //para buscar por id cojo el ide del elemento encontrado
+    @GetMapping(value = "/equipos/{id}")
+    public Equipos buscarEquipoID (@PathVariable int id) throws IOException {
+
+
+        Boolean encontrado = false;
+        Equipos equipo = null;
+        int identificador = id;
+
+        ArrayList<Equipos> listaequipos = utils.lecturaJSONEquipos();
+
+        int i = 0;
+        while(!encontrado && i < listaequipos.size()){
+            Equipos e = listaequipos.get(i);
+            if(identificador == e.getIdEquipo()){
+                encontrado = true;
+                equipo = e;
+            }
+            i++;
+        }
+
+        return equipo;
+    }
+
 }
