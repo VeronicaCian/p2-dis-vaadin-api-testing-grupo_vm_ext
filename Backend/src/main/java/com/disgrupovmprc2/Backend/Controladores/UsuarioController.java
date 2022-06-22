@@ -78,5 +78,40 @@ public class UsuarioController {
         return new ResponseEntity(HttpStatus.ACCEPTED);
 
     }
+    //instancion la varible de Java para incrementar el id al añadir uno nuevo
+    private final AtomicInteger nuevoID = new AtomicInteger();
 
+    //controlador POST para añadir un nuevo objeto al json
+    @PostMapping(value = "/usuario", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Usuarios> newUser(@RequestBody Usuarios usuario) throws IOException{
+
+        //instancio una nueva lectura dle JSON
+        ArrayList<Usuarios> arrayusuarios = utils.lecturaJSONUsuarios();
+
+        usuario.setId(this.nuevoID.getAndIncrement()); //incrementamos el id para este nuevo onjeto
+        arrayusuarios.add(usuario); //añadimos este nuevo marcador al array
+        //modificamos el json con estenuevo marcador
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create(); //hacmeos que aparezca bonito en vez de en una linea
+        FileWriter writer = null; //inicializamos el filewriter
+        String archivo = "Usuarios.json";
+
+        try{
+            writer = new FileWriter(archivo);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        gson.toJson(arrayusuarios,writer);
+
+        try {
+            writer.close();
+        } catch (IOException e2) {
+            e2.printStackTrace();
+        }
+
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
+
+    }
 }
