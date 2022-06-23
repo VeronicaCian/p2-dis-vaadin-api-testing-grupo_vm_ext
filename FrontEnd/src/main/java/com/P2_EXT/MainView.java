@@ -1,5 +1,6 @@
 package com.P2_EXT;
 
+import com.P2_EXT.Clases.Prestamos;
 import com.P2_EXT.Clases.Usuarios;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Html;
@@ -137,6 +138,64 @@ public class MainView extends VerticalLayout {
 
 
         //FIN LAYOUT USUARIOS
+
+
+
+
+
+        //INICIO LAYOUT PRESTAMOS
+
+        VerticalLayout VerticalPrestamoLayout = new VerticalLayout();
+        HorizontalLayout HorizontalPrestamoLayout = new HorizontalLayout();
+
+        //hacemos referencia a la pestaña de usuarios --> tab
+        pestañaPrestamo = new Tab(VaadinIcon.DOLLAR.create(),new Span("Prestamos"));
+        Div divPrestamos = new Div();
+
+        //nos creamos el boton de añadir un nuevo prestamo
+        Button btnNewPrestamo = new Button("Nuevo Prestamo");
+
+
+        TextField usuario = new TextField("Usuario_Id");
+        TextField equipo = new TextField("Equipo id");
+        TextField fechaIni = new TextField("Fecha Inicio");
+        TextField fechaFin = new TextField("Fecha fin ");
+        TextField comentarios = new TextField("Comentarios");
+
+
+        //Incicio de grid Prestamos
+
+        Grid<Prestamos> PrestamoGrid = new Grid<>(Prestamos.class);
+        PrestamoGrid.setItems(prestamos);
+        PrestamoGrid.removeColumnByKey("id");
+        PrestamoGrid.setColumns("usuario_Id","fecha_Inicio_Prestamo","fecha_Fin_Prestamo","comentarios");
+        PrestamoGrid.addColumn(Prestamos::getUsuario_Id);
+        PrestamoGrid.addColumn(Prestamos::getFecha_Inicio_Prestamo);
+        PrestamoGrid.addColumn(Prestamos::getFecha_Fin_Prestamo);
+        PrestamoGrid.addColumn(Prestamos::getComentarios);
+
+        //listener para cuando el usuario selecciones una fila del grid
+        PrestamoGrid.asSingleSelect().addValueChangeListener(e -> {
+            modalinfoPrestamo(e.getValue());
+        });
+
+
+        //al pulsar el boton de nuevo usuario
+        btnNewPrestamo.addClickListener( e ->nuevoModalPrestamo());
+
+
+
+
+
+        //Fin del grid Prestamos
+
+        VerticalPrestamoLayout.add(PrestamoGrid,btnNewPrestamo);
+        divPrestamos.add(VerticalPrestamoLayout);
+        VerticalUsersLayout.getStyle().set("flex-wrap", "wrap");
+
+
+        //FIN LAYOUT PRESTAMOS
+
 
 
 
