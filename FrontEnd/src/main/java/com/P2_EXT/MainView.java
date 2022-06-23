@@ -31,9 +31,7 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.router.Route;
 
-<<<<<<< HEAD
 import java.lang.reflect.Type;
-=======
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URI;
@@ -41,7 +39,6 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
->>>>>>> metodosusuarios
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
