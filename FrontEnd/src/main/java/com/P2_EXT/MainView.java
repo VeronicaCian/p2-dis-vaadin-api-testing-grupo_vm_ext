@@ -486,6 +486,61 @@ public class MainView extends VerticalLayout {
 
     }
 
+    //metodo para editar un prestamos
+    //fomrulario con textfields donde se muestra la info del prestamo solicitado
+    private void editarmodalPrestamo(Prestamos prestamo){
+
+        //nos generemos un nuevo dialogo
+        Dialog dialogo = new Dialog();
+        dialogo.setCloseOnEsc(false);
+        dialogo.setCloseOnOutsideClick(false);
+
+        //textfields necesarios
+        TextField idUsuario = new TextField("Id Usuario");
+        idUsuario.setValue(String.valueOf(prestamo.getUsuario_Id()));
+        dialogo.add(new HorizontalLayout(idUsuario));
+        TextField idEquipo = new TextField("Id Equipo");
+        idEquipo.setValue(String.valueOf(prestamo.getEquipo_Id()));
+        dialogo.add(new HorizontalLayout(idEquipo));
+        TextField fechaIni = new TextField("Fecha Inicio prestamo");
+        fechaIni.setValue(prestamo.getFecha_Inicio_Prestamo());
+        dialogo.add(new HorizontalLayout(fechaIni));
+        TextField fechaFin = new TextField("Fecha Fin prestamo");
+        fechaFin.setValue(prestamo.getFecha_Fin_Prestamo());
+        dialogo.add(new HorizontalLayout(fechaFin));
+        TextField fechaReal = new TextField("Fecha Real prestamo");
+        fechaReal.setValue(prestamo.getFecha_Real_Dev());
+        dialogo.add(new HorizontalLayout(fechaReal));
+        TextField comentaios = new TextField("Comentarios");
+        comentaios.setValue(prestamo.getComentarios());
+        dialogo.add(new HorizontalLayout(comentaios));
+
+        Button aceptar = new Button("Confirmar", e -> {
+
+            prestamo.setUsuario_Id(Integer.parseInt(idUsuario.getValue()));
+            prestamo.setEquipo_Id(Integer.parseInt(idEquipo.getValue()));
+            prestamo.setFecha_Inicio_Prestamo(fechaIni.getValue());
+            prestamo.setFecha_Fin_Prestamo(fechaFin.getValue());
+            prestamo.setFecha_Real_Dev(fechaReal.getValue());
+            prestamo.setComentarios(comentaios.getValue());
+
+            //guardamos los cambios
+            //LLAMADA A FUNCION DE PUT como modificaUser(user)
+            dialogo.close();
+
+        });
+
+        //cremoa un boton de abortar o cancelar y los añadirmos al layout
+        Button cancelar = new Button("Cancelar", event -> { dialogo.close(); });
+        HorizontalLayout opt = new HorizontalLayout(aceptar, cancelar);
+        dialogo.add(opt);
+        //abrimos el modal
+        dialogo.open();
+
+
+    }
+
+
 
 
 
