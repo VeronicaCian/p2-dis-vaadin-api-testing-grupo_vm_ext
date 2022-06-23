@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- USUARIOS -->
+
+<root>
+    <row>
+        <id>1</id>
+        <Nombre>Miguel</Nombre>
+        <Departamento>Informatica</Departamento>
+        <Ubicacion>Madrid</Ubicacion>
+        <telefono>603404703</telefono>
+        <email>salasrmcf1997@gmail.com</email>
+    </row>
+    <row>
+        <id>2</id>
+        <Nombre>Pablo</Nombre>
+        <Departamento>Contabilidad</Departamento>
+        <Ubicacion>Pozuelo</Ubicacion>
+        <telefono>638424986</telefono>
+        <email>pabloufv@gmail.com</email>
+    </row>
+    <row>
+        <id>3</id>
+        <Nombre>Lucia</Nombre>
+        <Departamento>Publicidad</Departamento>
+        <Ubicacion>Pozuelo</Ubicacion>
+        <telefono>638054986</telefono>
+        <email>luciaufv@gmail.com</email>
+    </row>
+    <row>
+        <id>4</id>
+        <Nombre>Carlos</Nombre>
+        <Departamento>marketing</Departamento>
+        <Ubicacion>Madrid</Ubicacion>
+        <telefono>525968742</telefono>
+        <email>carlosII@gmail.com</email>
+    </row>
+
+
+<!-- PRESTAMOS -->
+
+    <row>
+        <id>0</id>
+        <Usuario_Id>0</Usuario_Id>
+        <Equipo_Id>1</Equipo_Id>
+        <Fecha_Inicio_Prestamo>15/11/96</Fecha_Inicio_Prestamo>
+        <Fecha_Fin_Prestamo>15/11/97</Fecha_Fin_Prestamo>
+        <Fecha_Real_Dev>15/11/97</Fecha_Real_Dev>
+        <Comentarios>yyyy</Comentarios>
+    </row>
+    <row>
+        <id>1</id>
+        <Usuario_Id>1</Usuario_Id>
+        <Equipo_Id>1</Equipo_Id>
+        <Fecha_Inicio_Prestamo>24/11/97</Fecha_Inicio_Prestamo>
+        <Fecha_Fin_Prestamo>15/11/97</Fecha_Fin_Prestamo>
+        <Fecha_Real_Dev>16/11/97</Fecha_Real_Dev>
+        <Comentarios>xxx</Comentarios>
+    </row>
+    <row>
+        <id>2</id>
+        <Usuario_Id>7</Usuario_Id>
+        <Equipo_Id>1</Equipo_Id>
+        <Fecha_Inicio_Prestamo>24/01/97</Fecha_Inicio_Prestamo>
+        <Fecha_Fin_Prestamo>27/02/98</Fecha_Fin_Prestamo>
+        <Fecha_Real_Dev>27/02/98</Fecha_Real_Dev>
+        <Comentarios>xxx</Comentarios>
+    </row>
+    <row>
+        <id>0</id>
+        <Usuario_Id>3</Usuario_Id>
+        <Equipo_Id>1</Equipo_Id>
+        <Fecha_Inicio_Prestamo>15/11/96</Fecha_Inicio_Prestamo>
+        <Fecha_Fin_Prestamo>15/11/97</Fecha_Fin_Prestamo>
+        <Fecha_Real_Dev>15/12/97</Fecha_Real_Dev>
+        <Comentarios>gggg</Comentarios>
+    </row>
+    <row>
+        <id>1</id>
+        <Usuario_Id>6</Usuario_Id>
+        <Equipo_Id>1</Equipo_Id>
+        <Fecha_Inicio_Prestamo>15/11/96</Fecha_Inicio_Prestamo>
+        <Fecha_Fin_Prestamo>23/09/2001</Fecha_Fin_Prestamo>
+        <Fecha_Real_Dev>15/12/97</Fecha_Real_Dev>
+        <Comentarios>uuuu</Comentarios>
+    </row>
+    <row>
+        <id>0</id>
+        <Usuario_Id>7</Usuario_Id>
+        <Equipo_Id>1</Equipo_Id>
+        <Fecha_Inicio_Prestamo>24/01/97</Fecha_Inicio_Prestamo>
+        <Fecha_Fin_Prestamo>27/02/98</Fecha_Fin_Prestamo>
+        <Fecha_Real_Dev>27/02/98</Fecha_Real_Dev>
+        <Comentarios>xxx</Comentarios>
+    </row>
+    <row>
+        <id>0</id>
+        <Usuario_Id>0</Usuario_Id>
+        <Equipo_Id>2</Equipo_Id>
+        <Fecha_Inicio_Prestamo>ffff</Fecha_Inicio_Prestamo>
+        <Fecha_Fin_Prestamo>ggh</Fecha_Fin_Prestamo>
+        <Fecha_Real_Dev>LDG</Fecha_Real_Dev>
+        <Comentarios>dgfhgfth</Comentarios>
+    </row>
+
+<!-- EQUIPOS -->
+    <row>
+        <id_equipo>0</id_equipo>
+        <Tipo>Portatil</Tipo>
+        <Marca>Samsung</Marca>
+        <Uso>realizacion examen matlab</Uso>
+        <Sistema_operativo>
+            <nombreSO>Windows</nombreSO>
+            <versionSO>10</versionSO>
+        </Sistema_operativo>
+        <Hardware>
+            <Procesador>Intel core i7</Procesador>
+            <Memoria>3.2</Memoria>
+            <Disco_Duro>
+                <tipo_disco>SSD</tipo_disco>
+                <capacidad>1TB</capacidad>
+            </Disco_Duro>
+            <Pantalla>
+                <Diagonal>10</Diagonal>
+                <Resolucion>HD</Resolucion>
+            </Pantalla>
+        </Hardware>
+        <Software>
+            <Licencia_Pago>
+                <NombreSP>Matlab Professional</NombreSP>
+                <VersionSP>2022</VersionSP>
+                <TipoSP>OEM</TipoSP>
+            </Licencia_Pago>
+            <Licencia_Libre>
+                <NombreSL>Mozilla firefox</NombreSL>
+                <VersionSL>2019</VersionSL>
+            </Licencia_Libre>
+        </Software>
+    </row>
+    <row>
+        <id_equipo>1</id_equipo>
+        <Tipo>Portatil</Tipo>
+        <Marca>HP</Marca>
+        <Uso>realizacion practicas de DIS</Uso>
+        <Sistema_operativo>
+            <nombreSO>Windows</nombreSO>
+            <versionSO>10</versionSO>
+        </Sistema_operativo>
+        <Hardware>
+            <Procesador>Intel core i7</Procesador>
+            <Memoria>3.2</Memoria>
+            <Disco_Duro>
+                <tipo_disco>SSD</tipo_disco>
+                <capacidad>1TB</capacidad>
+            </Disco_Duro>
+            <Pantalla>
+                <Diagonal>10</Diagonal>
+                <Resolucion>HD</Resolucion>
+            </Pantalla>
+        </Hardware>
+        <Software>
+            <Licencia_Pago>
+                <NombreSP>GitBash Professional</NombreSP>
+                <VersionSP>2022</VersionSP>
+                <TipoSP>OEM</TipoSP>
+            </Licencia_Pago>
+            <Licencia_Libre>
+                <NombreSL>Mozilla firefox</NombreSL>
+                <VersionSL>2019</VersionSL>
+            </Licencia_Libre>
+        </Software>
+    </row>
+</root>
