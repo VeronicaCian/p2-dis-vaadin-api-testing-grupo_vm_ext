@@ -88,7 +88,7 @@ public class UsuarioController {
         //instancio una nueva lectura dle JSON
         ArrayList<Usuarios> arrayusuarios = utils.lecturaJSONUsuarios();
 
-        usuario.setId(this.nuevoID.getAndIncrement()); //incrementamos el id para este nuevo onjeto
+        //usuario.setId(this.nuevoID.getAndIncrement()); //incrementamos el id para este nuevo onjeto
         arrayusuarios.add(usuario); //añadimos este nuevo marcador al array
         //modificamos el json con estenuevo marcador
 

@@ -52,8 +52,6 @@
     "Fecha_Fin_Prestamo": "27/02/98",
     "Fecha_Real_Dev": "27/02/98",
     "Comentarios": "xxx"
-<<<<<<< HEAD
-=======
   },
   {
     "id": 0,
@@ -63,6 +61,5 @@
     "Fecha_Fin_Prestamo": "ggh",
     "Fecha_Real_Dev": "",
     "Comentarios": "dgfhgfth"
->>>>>>> a2d6793c624b984749868b31ae98c183975ab155
   }
 ]
