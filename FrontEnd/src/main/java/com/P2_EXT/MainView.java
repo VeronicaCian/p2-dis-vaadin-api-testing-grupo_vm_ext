@@ -1,5 +1,6 @@
 package com.P2_EXT;
 
+import com.P2_EXT.Clases.Equipos;
 import com.P2_EXT.Clases.Prestamos;
 import com.P2_EXT.Clases.Usuarios;
 import com.google.gson.Gson;
@@ -146,6 +147,46 @@ public class MainView extends VerticalLayout {
         //FIN LAYOUT USUARIOS
 
 
+
+
+        //INICIO LAYOUT EQUIPOS
+
+        VerticalLayout VerticalEquipoLayout = new VerticalLayout();
+        HorizontalLayout HorizontalEquipoLayout = new HorizontalLayout();
+
+        //hacemos referencia a la pestaña de usuarios --> tab
+        pestañaEquipo = new Tab(VaadinIcon.DESKTOP.create(),new Span("Equipos"));
+        Div divEquipos = new Div();
+
+        //nos creamos el boton de añadir un nuevo prestamo
+        Button btnNewEquipo = new Button("Nuevo Prestamo");
+
+        //Inicio Grid Equipos
+
+        Grid<Equipos> EquipoGrid = new Grid<>(Equipos.class);
+        EquipoGrid.setSelectionMode(Grid.SelectionMode.SINGLE);
+        EquipoGrid.setItems(equipos);
+        //EquipoGrid.removeColumnByKey("id_equipo");
+        EquipoGrid.setColumns("tipo","marca","uso");
+        EquipoGrid.addColumn(Equipos::getTipo);
+        EquipoGrid.addColumn(Equipos::getMarca);
+        EquipoGrid.addColumn(Equipos::getUso);
+
+        EquipoGrid.setWidth("100%");
+
+        //listener para cuando el usuario selecciones una fila del grid
+        EquipoGrid.asSingleSelect().addValueChangeListener(e ->
+                //AQUI VA LA LLAMADA AL MODAL DE VER LOS EQUIPOS
+                modalinfoEquipos(e.getValue()));
+
+        //Fin Grid equipos
+
+
+        VerticalEquipoLayout.add(EquipoGrid,HorizontalEquipoLayout);
+        divEquipos.add(VerticalEquipoLayout);
+        divEquipos.getStyle().set("flex-wrap", "wrap");
+
+        //FIN LAYOUT EQUIPOS
 
 
 
@@ -628,6 +669,57 @@ public class MainView extends VerticalLayout {
         dialog.add(opciones);
         dialog.open();
 
+    }
+
+    //modal info de los equipos
+    void modalinfoEquipos(Equipos equipos){
+
+
+        try{
+
+            Dialog dialog = new Dialog(); //modal instanciado
+            dialog.setCloseOnEsc(false);
+            dialog.setCloseOnOutsideClick(false);
+
+            //declaramos los textfields necesarios
+            dialog.add(new HorizontalLayout(new Html("<b>Tipo: </b>"), new Text(equipos.getTipo())));
+            dialog.add(new HorizontalLayout(new Html("<b>Marca: </b>"), new Text(equipos.getMarca())));
+            dialog.add(new HorizontalLayout(new Html("<b>Uso: </b>"), new Text(equipos.getUso())));
+            dialog.add(new HorizontalLayout(new Html("<b>       SISTEMA OPERATIVO: </b>")));
+            dialog.add(new HorizontalLayout(new Html("<b>Nombre SO: </b>"), new Text(equipos.getSistema_operativo().nombreSO)));
+            dialog.add(new HorizontalLayout(new Html("<b>Version SO: </b>"), new Text(equipos.getSistema_operativo().versionSO)));
+            dialog.add(new HorizontalLayout(new Html("<b>       HARDWARE: </b>")));
+            dialog.add(new HorizontalLayout(new Html("<b>Procesador SO: </b>"), new Text(equipos.getHardware().Procesador)));
+            dialog.add(new HorizontalLayout(new Html("<b>Memoria: </b>"), new Text(String.valueOf(equipos.getHardware().Memoria))));
+            dialog.add(new HorizontalLayout(new Html("<b>       DISCO DURO: </b>")));
+            dialog.add(new HorizontalLayout(new Html("<b>Tipo disco SO: </b>"), new Text(equipos.getHardware().getDiscoduro().getTipodisco())));
+            dialog.add(new HorizontalLayout(new Html("<b>capacidad: </b>"), new Text(equipos.getHardware().getDiscoduro().getCapacidad())));
+            dialog.add(new HorizontalLayout(new Html("<b>       PANTALLA: </b>")));
+            dialog.add(new HorizontalLayout(new Html("<b>Diagonal: </b>"), new Text(String.valueOf(equipos.getHardware().getPantalla().Diagonal))));
+            dialog.add(new HorizontalLayout(new Html("<b>Resolucion SO: </b>"), new Text(equipos.getHardware().getPantalla().Resolucion)));
+            dialog.add(new HorizontalLayout(new Html("<b>       SOFTWARE: </b>")));
+            dialog.add(new HorizontalLayout(new Html("<b>       Licencia de Pago: </b>")));
+            dialog.add(new HorizontalLayout(new Html("<b>Nombre Licencia Pago: </b>"), new Text(equipos.getSoftware().getLicenciapago().NombreSP)));
+            dialog.add(new HorizontalLayout(new Html("<b>Version Licencia Pago: </b>"), new Text(equipos.getSoftware().getLicenciapago().VersionSP)));
+            dialog.add(new HorizontalLayout(new Html("<b>Tipo Licencia Pago: </b>"), new Text(equipos.getSoftware().getLicenciapago().TipoSP)));
+            dialog.add(new HorizontalLayout(new Html("<b>       Licencia Libre: </b>")));
+            dialog.add(new HorizontalLayout(new Html("<b>Nombre Licencia Libre: </b>"), new Text(equipos.getSoftware().getLicencialibre().NombreSL)));
+            dialog.add(new HorizontalLayout(new Html("<b>Version Licencia Libre: </b>"), new Text(equipos.getSoftware().getLicencialibre().VersionSL)));
+
+            //impirmo por consola el id del equipo para ver si lo coge bien
+            System.out.println(equipos.getIdEquipo());
+
+            Button cancelButton = new Button("Cancelar", event -> { dialog.close(); });
+            HorizontalLayout actions2 = new HorizontalLayout(cancelButton);
+            dialog.add(actions2);
+
+            dialog.open();
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
