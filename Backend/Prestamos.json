@@ -24,10 +24,7 @@
     "Fecha_Inicio_Prestamo": "23/06/2022",
     "Fecha_Fin_Prestamo": "23/06/2022",
     "Fecha_Real_Dev": "",
-<<<<<<< HEAD
     "Comentarios": "prestamo para el examen de historia de la ciencia Grado informatica"
-=======
-    "Comentarios": "dgfhgfth"
   },
   {
     "id": 69,
@@ -35,8 +32,8 @@
     "Equipo_Id": 76,
     "Fecha_Inicio_Prestamo": "16/06/2022",
     "Fecha_Fin_Prestamo": "26/08/2023",
-    "Fecha_Real_Dev": "12/08/2023",
+    "Fecha_Real_Dev": "",
     "Comentarios": "prueba"
->>>>>>> 22b22d880c77cf13ec78d7907e5b67ea10e785ba
+
   }
 ]
