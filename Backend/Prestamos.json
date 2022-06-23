@@ -61,5 +61,14 @@
     "Fecha_Fin_Prestamo": "ggh",
     "Fecha_Real_Dev": "",
     "Comentarios": "dgfhgfth"
+  },
+  {
+    "id": 69,
+    "Usuario_Id": 53,
+    "Equipo_Id": 76,
+    "Fecha_Inicio_Prestamo": "16/06/2022",
+    "Fecha_Fin_Prestamo": "26/08/2023",
+    "Fecha_Real_Dev": "12/08/2023",
+    "Comentarios": "prueba"
   }
 ]
