@@ -48,6 +48,7 @@ import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -64,6 +65,13 @@ public class MainView extends VerticalLayout {
     HttpRequest request;
     HttpClient cliente = HttpClient.newBuilder().build();
     HttpResponse<String> response;
+
+    Random random = new Random();
+    int maxrandom = 100;
+    int id_user = random.nextInt(maxrandom)+1;
+    int id_equipo = random.nextInt(maxrandom)+1;
+    int id_prestamo = random.nextInt(maxrandom)+1;
+
 
     //metodo para trar desde el backend los usuarios
     private String Getusers(){
@@ -789,9 +797,9 @@ public class MainView extends VerticalLayout {
         //creamos el boton de aceptar
         Button aceptar = new Button("Añadir", event -> {
 
-            int id = idusuario.intValue();
+            //int id = idusuario.intValue();
 
-            Usuarios user = new Usuarios(id,Nombre.getValue(),Departamento.getValue(),Ubicacion.getValue(),telefono.getValue(),email.getValue());
+            Usuarios user = new Usuarios(id_user,Nombre.getValue(),Departamento.getValue(),Ubicacion.getValue(),telefono.getValue(),email.getValue());
             //crearUser(user);
 
             user.setId(idusuario.getAndIncrement());
@@ -979,7 +987,7 @@ public class MainView extends VerticalLayout {
 
         //nos creamos el boton de aceptar para confirmar el nuevo prestamo
         Button aceptar = new Button("Añadir",event -> {
-            Prestamos prestamo = new Prestamos(4,usuarios.getValue(),id_Equipo.getValue(),fechaIni.getValue(),fechaFin.getValue(),fechaReal.getValue(),comentarios.getValue());
+            Prestamos prestamo = new Prestamos(id_prestamo,usuarios.getValue(),id_Equipo.getValue(),fechaIni.getValue(),fechaFin.getValue(),fechaReal.getValue(),comentarios.getValue());
 
             prestamo.setUsuario_Id(usuarios.getValue());
             prestamo.setEquipo_Id(id_Equipo.getValue());
