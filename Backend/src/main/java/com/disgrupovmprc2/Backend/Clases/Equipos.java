@@ -11,7 +11,7 @@ public class Equipos {
     //atributos de equipos con sus respectivas llamadas a otras clases
 
     @JsonProperty("id_equipo")
-    public int id_equipo;
+    public Integer id_equipo;
 
     @JsonProperty("Tipo")
     private String Tipo;
@@ -32,7 +32,7 @@ public class Equipos {
     private Software Software;
 
 
-    public Equipos(int id_equipo,String Tipo, String Marca, String Uso, Sistema_Operativo Sistema_operativo, Hardware Hardware, Software Software){
+    public Equipos(Integer id_equipo,String Tipo, String Marca, String Uso, Sistema_Operativo Sistema_operativo, Hardware Hardware, Software Software){
         this.id_equipo = id_equipo;
         this.Tipo = Tipo;
         this.Marca = Marca;
@@ -90,11 +90,11 @@ public class Equipos {
         this.Tipo = tipo;
     }
 
-    public int getIdEquipo() {
+    public Integer getIdEquipo() {
         return id_equipo;
     }
 
-    public void setIdEquipo(int idEquipo) {
+    public void setIdEquipo(Integer idEquipo) {
         this.id_equipo = id_equipo;
     }
 }
