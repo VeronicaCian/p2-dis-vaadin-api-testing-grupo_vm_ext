@@ -1,6 +1,9 @@
 package com.P2_EXT;
 
 import com.P2_EXT.Clases.Usuarios;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.Text;
@@ -25,6 +28,14 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.router.Route;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -35,6 +46,148 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Route
 @PWA(name = "My Application", shortName = "My Application")
 public class MainView extends VerticalLayout {
+
+    private static final String URL = "http://localhost:8081/api/%s";
+    private static final String URL2 = "http://localhost:8081/api/%s/%d";
+    //private static HttpRequest request;
+    HttpRequest request;
+    HttpClient cliente = HttpClient.newBuilder().build();
+    HttpResponse<String> response;
+
+    //metodo para trar desde el backend los usuarios
+    private String Getusers(){
+        String resource = String.format(URL, "usuarios");
+
+        try{
+            request = HttpRequest.newBuilder(new URI(resource)).header("Content-type","application/java")
+                    .GET().build();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            response = cliente.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        return response.body();
+
+    }
+
+
+
+
+    //metodo para trar desde el backend los usuarios
+    private String Getuser(String name){
+        String resource = String.format(URL2, "usuarios", name);
+
+        try{
+            request = HttpRequest.newBuilder(new URI(resource)).header("Content-type","application/java")
+                    .GET().build();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            response = cliente.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return response.body();
+
+    }
+
+
+
+
+
+
+    public  String crearUser(Usuarios newUser){
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String string = gson.toJson(newUser, Usuarios.class);
+        String resource = String.format(URL, "usuario");
+
+
+
+        try{
+            request = HttpRequest.newBuilder(new URI(resource)).header("Content-type","application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(string)).build();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            response = cliente.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        return response.body();
+
+    }
+
+
+
+
+    private String modificarUser(Usuarios userModified){
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String string = gson.toJson(userModified, Usuarios.class);
+        String resource = String.format(URL, "usuario");
+
+
+        try{
+            request = HttpRequest.newBuilder(new URI(resource)).header("Content-Type", "application/json").PUT(HttpRequest.BodyPublishers.ofString(string)).build();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            response = cliente.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return response.body();
+    }
+
+
+
+
+    //DELETE USER
+    private String deleteUser(int id){
+        String resource = String.format(URL2, "usuario", id);
+
+        try{
+            request = HttpRequest.newBuilder(new URI(resource)).header("Content-type","application/java").DELETE().build();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            response = cliente.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return response.body();
+
+    }
+
 
 
     //declaramos las variables final para el proyecto
@@ -50,6 +203,13 @@ public class MainView extends VerticalLayout {
     public MainView() {
 
         this.filtros = new TextField();
+        //Inicializamos una llamada para coger los usuarios y meterlos en un array
+        String usuariosarray = Getusers();
+        Gson gson2 = new GsonBuilder().setPrettyPrinting().create();
+        ArrayList<Usuarios> users;
+        Type listausers = new TypeToken<ArrayList<Usuarios>>(){}.getType();
+        users = gson2.fromJson(usuariosarray, listausers);
+
 
         //INICIO LAYOUT USUARIOS
 
