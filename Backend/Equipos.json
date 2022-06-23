@@ -68,5 +68,356 @@
         }
 
 
+    },
+    {
+        "id_equipo": 2,
+        "Tipo": "Portatil",
+        "Marca": "HP",
+        "Uso": "realizacion practicas de DIS",
+        "Sistema_operativo":{
+            "nombreSO": "Windows",
+            "versionSO": "10"
+        },
+        "Hardware":{
+            "Procesador": "Intel core i7",
+            "Memoria": 3.2,
+            "Disco_Duro":{
+                "tipo_disco": "SSD",
+                "capacidad": "1TB"
+            },
+            "Pantalla":{
+                "Diagonal": 10,
+                "Resolucion": "HD"
+            }
+        },
+        "Software":{
+            "Licencia_Pago":{
+                "NombreSP": "GitBash Professional",
+                "VersionSP": "2022",
+                "TipoSP":"OEM"
+            },
+            "Licencia_Libre":{
+                "NombreSL": "Mozilla firefox",
+                "VersionSL": "2019"
+            }
+        }
+
+
+    },
+    {
+    "id_equipo": 3,
+    "Tipo": "Portatil",
+    "Marca": "HP",
+    "Uso": "realizacion practicas de DIS",
+    "Sistema_operativo":{
+        "nombreSO": "Windows",
+        "versionSO": "10"
+    },
+    "Hardware":{
+        "Procesador": "Intel core i7",
+        "Memoria": 3.2,
+        "Disco_Duro":{
+            "tipo_disco": "SSD",
+            "capacidad": "1TB"
+        },
+        "Pantalla":{
+            "Diagonal": 10,
+            "Resolucion": "HD"
+        }
+    },
+    "Software":{
+        "Licencia_Pago":{
+            "NombreSP": "GitBash Professional",
+            "VersionSP": "2022",
+            "TipoSP":"OEM"
+        },
+        "Licencia_Libre":{
+            "NombreSL": "Mozilla firefox",
+            "VersionSL": "2019"
+        }
     }
+
+
+    },
+    {
+        "id_equipo": 4,
+        "Tipo": "Portatil",
+        "Marca": "HP",
+        "Uso": "realizacion practicas de DIS",
+        "Sistema_operativo":{
+            "nombreSO": "Windows",
+            "versionSO": "10"
+        },
+        "Hardware":{
+            "Procesador": "Intel core i7",
+            "Memoria": 3.2,
+            "Disco_Duro":{
+                "tipo_disco": "SSD",
+                "capacidad": "1TB"
+            },
+            "Pantalla":{
+                "Diagonal": 10,
+                "Resolucion": "HD"
+            }
+        },
+        "Software":{
+            "Licencia_Pago":{
+                "NombreSP": "GitBash Professional",
+                "VersionSP": "2022",
+                "TipoSP":"OEM"
+            },
+            "Licencia_Libre":{
+                "NombreSL": "Mozilla firefox",
+                "VersionSL": "2019"
+            }
+        }
+
+
+    },
+    {
+    "id_equipo": 5,
+    "Tipo": "Portatil",
+    "Marca": "HP",
+    "Uso": "realizacion practicas de DIS",
+    "Sistema_operativo":{
+        "nombreSO": "Windows",
+        "versionSO": "10"
+    },
+    "Hardware":{
+        "Procesador": "Intel core i7",
+        "Memoria": 3.2,
+        "Disco_Duro":{
+            "tipo_disco": "SSD",
+            "capacidad": "1TB"
+        },
+        "Pantalla":{
+            "Diagonal": 10,
+            "Resolucion": "HD"
+        }
+    },
+    "Software":{
+        "Licencia_Pago":{
+            "NombreSP": "GitBash Professional",
+            "VersionSP": "2022",
+            "TipoSP":"OEM"
+        },
+        "Licencia_Libre":{
+            "NombreSL": "Mozilla firefox",
+            "VersionSL": "2019"
+        }
+    }
+
+
+    },
+    {
+        "id_equipo": 6,
+        "Tipo": "Portatil",
+        "Marca": "HP",
+        "Uso": "realizacion practicas de DIS",
+        "Sistema_operativo":{
+            "nombreSO": "Windows",
+            "versionSO": "10"
+        },
+        "Hardware":{
+            "Procesador": "Intel core i7",
+            "Memoria": 3.2,
+            "Disco_Duro":{
+                "tipo_disco": "SSD",
+                "capacidad": "1TB"
+            },
+            "Pantalla":{
+                "Diagonal": 10,
+                "Resolucion": "HD"
+            }
+        },
+        "Software":{
+            "Licencia_Pago":{
+                "NombreSP": "GitBash Professional",
+                "VersionSP": "2022",
+                "TipoSP":"OEM"
+            },
+            "Licencia_Libre":{
+                "NombreSL": "Mozilla firefox",
+                "VersionSL": "2019"
+            }
+        }
+
+
+    },
+    {
+        "id_equipo": 7,
+        "Tipo": "Portatil",
+        "Marca": "HP",
+        "Uso": "realizacion practicas de DIS",
+        "Sistema_operativo":{
+            "nombreSO": "Windows",
+            "versionSO": "10"
+        },
+        "Hardware":{
+            "Procesador": "Intel core i7",
+            "Memoria": 3.2,
+            "Disco_Duro":{
+                "tipo_disco": "SSD",
+                "capacidad": "1TB"
+            },
+            "Pantalla":{
+                "Diagonal": 10,
+                "Resolucion": "HD"
+            }
+        },
+        "Software":{
+            "Licencia_Pago":{
+                "NombreSP": "GitBash Professional",
+                "VersionSP": "2022",
+                "TipoSP":"OEM"
+            },
+            "Licencia_Libre":{
+                "NombreSL": "Mozilla firefox",
+                "VersionSL": "2019"
+            }
+        }
+
+
+    },
+    {
+        "id_equipo": 8,
+        "Tipo": "Portatil",
+        "Marca": "HP",
+        "Uso": "realizacion practicas de DIS",
+        "Sistema_operativo":{
+            "nombreSO": "Windows",
+            "versionSO": "10"
+        },
+        "Hardware":{
+            "Procesador": "Intel core i7",
+            "Memoria": 3.2,
+            "Disco_Duro":{
+                "tipo_disco": "SSD",
+                "capacidad": "1TB"
+            },
+            "Pantalla":{
+                "Diagonal": 10,
+                "Resolucion": "HD"
+            }
+        },
+        "Software":{
+            "Licencia_Pago":{
+                "NombreSP": "GitBash Professional",
+                "VersionSP": "2022",
+                "TipoSP":"OEM"
+            },
+            "Licencia_Libre":{
+                "NombreSL": "Mozilla firefox",
+                "VersionSL": "2019"
+            }
+        }
+
+
+    },
+    {
+        "id_equipo": 9,
+        "Tipo": "Portatil",
+        "Marca": "HP",
+        "Uso": "realizacion practicas de DIS",
+        "Sistema_operativo":{
+            "nombreSO": "Windows",
+            "versionSO": "10"
+        },
+        "Hardware":{
+            "Procesador": "Intel core i7",
+            "Memoria": 3.2,
+            "Disco_Duro":{
+                "tipo_disco": "SSD",
+                "capacidad": "1TB"
+            },
+            "Pantalla":{
+                "Diagonal": 10,
+                "Resolucion": "HD"
+            }
+        },
+        "Software":{
+            "Licencia_Pago":{
+                "NombreSP": "GitBash Professional",
+                "VersionSP": "2022",
+                "TipoSP":"OEM"
+            },
+            "Licencia_Libre":{
+                "NombreSL": "Mozilla firefox",
+                "VersionSL": "2019"
+            }
+        }
+
+
+    },
+    {
+        "id_equipo": 10,
+        "Tipo": "Portatil",
+        "Marca": "HP",
+        "Uso": "realizacion practicas de DIS",
+        "Sistema_operativo":{
+            "nombreSO": "Windows",
+            "versionSO": "10"
+        },
+        "Hardware":{
+            "Procesador": "Intel core i7",
+            "Memoria": 3.2,
+            "Disco_Duro":{
+                "tipo_disco": "SSD",
+                "capacidad": "1TB"
+            },
+            "Pantalla":{
+                "Diagonal": 10,
+                "Resolucion": "HD"
+            }
+        },
+        "Software":{
+            "Licencia_Pago":{
+                "NombreSP": "GitBash Professional",
+                "VersionSP": "2022",
+                "TipoSP":"OEM"
+            },
+            "Licencia_Libre":{
+                "NombreSL": "Mozilla firefox",
+                "VersionSL": "2019"
+            }
+        }
+
+
+    },
+    {
+        "id_equipo": 11,
+        "Tipo": "Portatil",
+        "Marca": "HP",
+        "Uso": "realizacion practicas de DIS",
+        "Sistema_operativo":{
+            "nombreSO": "Windows",
+            "versionSO": "10"
+        },
+        "Hardware":{
+            "Procesador": "Intel core i7",
+            "Memoria": 3.2,
+            "Disco_Duro":{
+                "tipo_disco": "SSD",
+                "capacidad": "1TB"
+            },
+            "Pantalla":{
+                "Diagonal": 10,
+                "Resolucion": "HD"
+            }
+        },
+        "Software":{
+            "Licencia_Pago":{
+                "NombreSP": "GitBash Professional",
+                "VersionSP": "2022",
+                "TipoSP":"OEM"
+            },
+            "Licencia_Libre":{
+                "NombreSL": "Mozilla firefox",
+                "VersionSL": "2019"
+            }
+        }
+
+
+    }
+
 ]

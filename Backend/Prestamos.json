@@ -3,63 +3,27 @@
     "id": 0,
     "Usuario_Id": 0,
     "Equipo_Id": 1,
-    "Fecha_Inicio_Prestamo": "15/11/96",
-    "Fecha_Fin_Prestamo": "15/11/97",
-    "Fecha_Real_Dev": "15/11/97",
-    "Comentarios": "yyyy"
-  },
-  {
-    "id": 1,
-    "Usuario_Id": 1,
-    "Equipo_Id": 1,
-    "Fecha_Inicio_Prestamo": "24/11/97",
-    "Fecha_Fin_Prestamo": "15/11/97",
-    "Fecha_Real_Dev": "16/11/97",
-    "Comentarios": "xxx"
-  },
-  {
-    "id": 2,
-    "Usuario_Id": 7,
-    "Equipo_Id": 1,
-    "Fecha_Inicio_Prestamo": "24/01/97",
-    "Fecha_Fin_Prestamo": "27/02/98",
-    "Fecha_Real_Dev": "27/02/98",
-    "Comentarios": "xxx"
-  },
-  {
-    "id": 0,
-    "Usuario_Id": 3,
-    "Equipo_Id": 1,
-    "Fecha_Inicio_Prestamo": "15/11/96",
-    "Fecha_Fin_Prestamo": "15/11/97",
-    "Fecha_Real_Dev": "15/12/97",
-    "Comentarios": "gggg"
-  },
-  {
-    "id": 1,
-    "Usuario_Id": 6,
-    "Equipo_Id": 1,
-    "Fecha_Inicio_Prestamo": "15/11/96",
-    "Fecha_Fin_Prestamo": "23/09/2001",
-    "Fecha_Real_Dev": "15/12/97",
-    "Comentarios": "uuuu"
-  },
-  {
-    "id": 0,
-    "Usuario_Id": 7,
-    "Equipo_Id": 1,
-    "Fecha_Inicio_Prestamo": "24/01/97",
-    "Fecha_Fin_Prestamo": "27/02/98",
-    "Fecha_Real_Dev": "27/02/98",
-    "Comentarios": "xxx"
-  },
-  {
-    "id": 0,
-    "Usuario_Id": 0,
-    "Equipo_Id": 2,
-    "Fecha_Inicio_Prestamo": "ffff",
-    "Fecha_Fin_Prestamo": "ggh",
+    "Fecha_Inicio_Prestamo": "15/06/2022",
+    "Fecha_Fin_Prestamo": "16/06/2022",
     "Fecha_Real_Dev": "",
-    "Comentarios": "dgfhgfth"
+    "Comentarios": "equipo alquilado para realizar examen de convocatoria extraordianria de calculo "
+  },
+  {
+    "id": 87,
+    "Usuario_Id": 1,
+    "Equipo_Id": 3,
+    "Fecha_Inicio_Prestamo": "19/06/2022",
+    "Fecha_Fin_Prestamo": "26/06/2022",
+    "Fecha_Real_Dev": "",
+    "Comentarios": "se lleva el alumno de derecho el ordenador para hacer una investigacion de TFG"
+  },
+  {
+    "id": 75,
+    "Usuario_Id": 99,
+    "Equipo_Id": 8,
+    "Fecha_Inicio_Prestamo": "23/06/2022",
+    "Fecha_Fin_Prestamo": "23/06/2022",
+    "Fecha_Real_Dev": "",
+    "Comentarios": "prestamo para el examen de historia de la ciencia Grado informatica"
   }
 ]

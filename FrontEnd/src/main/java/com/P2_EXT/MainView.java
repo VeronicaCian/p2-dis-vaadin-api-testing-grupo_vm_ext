@@ -941,21 +941,21 @@ public class MainView extends VerticalLayout {
         //Inicializamos una llamada para coger los usuarios y meterlos en un array
         String equiposarray = GetEquipos();
         ArrayList<Equipos> equipo;
-        Type listaequipo = new TypeToken<ArrayList<Usuarios>>(){}.getType();
+        Type listaequipo = new TypeToken<ArrayList<Equipos>>(){}.getType();
         equipo = gson2.fromJson(equiposarray, listaequipo);
 
         //nos creamos un array de usuarios para introducir los id
         ArrayList<Integer> usersid = new ArrayList<Integer>();
         ComboBox<Integer> usuarios = new ComboBox<Integer>("Usuarios");
 
-        ArrayList<Integer> equipoid = new ArrayList<>();
+        ArrayList<Integer> equipoid = new ArrayList<Integer>();
         ComboBox<Integer> equipos = new ComboBox<>("Equipos");
 
         dialog.add(new HorizontalLayout(usuarios));
-        //dialog.add(new HorizontalLayout(equipos));
+        dialog.add(new HorizontalLayout(equipos));
         //nos creamos los diferentes textfields para ingresar los datos
-        IntegerField id_Equipo = new IntegerField("ID Equipo");
-        dialog.add(new HorizontalLayout(id_Equipo));
+        //IntegerField id_Equipo = new IntegerField("ID Equipo");
+        //dialog.add(new HorizontalLayout(id_Equipo));
         //IntegerField id_Usuario = new IntegerField("ID Usuario");
         //dialog.add(new HorizontalLayout(id_Usuario));
         TextField fechaIni = new TextField("Fecha Inicio Prestamo");
@@ -974,19 +974,19 @@ public class MainView extends VerticalLayout {
         }
         usuarios.setItems(usersid);
 
-        //for(Equipos e : equipo){
-        //equipoid.add(e.getIdEquipo());
-        //}
-        //equipos.setItems(equipoid);
+        for(Equipos e : equipo){
+            equipoid.add(e.getIdEquipo());
+        }
+        equipos.setItems(equipoid);
 
 
         //nos creamos el boton de aceptar para confirmar el nuevo prestamo
         Button aceptar = new Button("Añadir",event -> {
-            Prestamos prestamo = new Prestamos(id_prestamo,usuarios.getValue(),id_Equipo.getValue(),fechaIni.getValue(),fechaFin.getValue(),fechaReal.getValue(),comentarios.getValue());
+            Prestamos prestamo = new Prestamos(id_prestamo,usuarios.getValue(),equipos.getValue(),fechaIni.getValue(),fechaFin.getValue(),fechaReal.getValue(),comentarios.getValue());
 
             prestamo.setId(id_prestamo);
             prestamo.setUsuario_Id(usuarios.getValue());
-            prestamo.setEquipo_Id(id_Equipo.getValue());
+            prestamo.setEquipo_Id(equipos.getValue());
             prestamo.setFecha_Inicio_Prestamo(fechaIni.getValue());
             prestamo.setFecha_Fin_Prestamo(fechaFin.getValue());
             prestamo.setFecha_Real_Dev(fechaReal.getValue());

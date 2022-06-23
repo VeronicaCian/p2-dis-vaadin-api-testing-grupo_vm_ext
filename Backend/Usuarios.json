@@ -5,7 +5,7 @@
     "Departamento": "Contabilidad",
     "Ubicacion": "Pozuelo",
     "telefono": 638424986,
-    "email": "pabloufv@gmail.com"
+    "email": "ramonufv@gmail.com"
   },
   {
     "id": 2,
@@ -22,5 +22,45 @@
     "Ubicacion": "pozuelo",
     "telefono": 685204423,
     "email": "luciaufv@gmail.com"
+  },
+  {
+    "id": 99,
+    "Nombre": "Sergio",
+    "Departamento": "finanzas",
+    "Ubicacion": "Parla",
+    "telefono": 689231450,
+    "email": "sergioufv@gmail.com"
+  },
+  {
+    "id": 79,
+    "Nombre": "Carlota",
+    "Departamento": "RRHH",
+    "Ubicacion": "pozuelo",
+    "telefono": 698252360,
+    "email": "carlotaufv@gmail.com"
+  },
+  {
+    "id": 87,
+    "Nombre": "Nacho",
+    "Departamento": "informatica",
+    "Ubicacion": "malaga",
+    "telefono": 675252047,
+    "email": "nachoufv@gmail.com"
+  },
+  {
+    "id": 10,
+    "Nombre": "maria",
+    "Departamento": "RRHH",
+    "Ubicacion": "pozuelo",
+    "telefono": 915867458,
+    "email": "mariaufv@gmail.com"
+  },
+  {
+    "id": 48,
+    "Nombre": "Veronica",
+    "Departamento": "informatica",
+    "Ubicacion": "cadiz",
+    "telefono": 685845203,
+    "email": "varonicaufv@gmail.com"
   }
 ]
