@@ -31,17 +31,24 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.router.Route;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
+
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -51,12 +58,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 @PWA(name = "My Application", shortName = "My Application")
 public class MainView extends VerticalLayout {
 
+
     private static final String URL = "http://localhost:8081/api/%s";
     private static final String URL2 = "http://localhost:8081/api/%s/%d";
     //private static HttpRequest request;
     HttpRequest request;
     HttpClient cliente = HttpClient.newBuilder().build();
     HttpResponse<String> response;
+
+    Random random = new Random();
+    int maxrandom = 100;
+    int id_user = random.nextInt(maxrandom)+1;
+    int id_equipo = random.nextInt(maxrandom)+1;
+    int id_prestamo = random.nextInt(maxrandom)+1;
+
 
     //metodo para trar desde el backend los usuarios
     private String Getusers(){
@@ -194,6 +209,92 @@ public class MainView extends VerticalLayout {
 
 
 
+
+
+
+
+    //metodo para trar desde el backend los prestamos
+    private String GetPrestamos(){
+        String resource = String.format(URL, "prestamos");
+
+
+        try{
+            request = HttpRequest.newBuilder(new URI(resource)).header("Content-type","application/java")
+                    .GET().build();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            response = cliente.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return response.body();
+
+    }
+
+
+
+
+
+    public  String crearPrestamo(Prestamos prestamo){
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String string = gson.toJson(prestamo, Prestamos.class);
+        String resource = String.format(URL, "prestamo");
+
+
+
+        try{
+            request = HttpRequest.newBuilder(new URI(resource)).header("Content-type","application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(string)).build();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            response = cliente.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        return response.body();
+
+    }
+
+
+
+
+    //metodo para trar desde el backend los prestamos
+    private String GetEquipos(){
+        String resource = String.format(URL, "equipos");
+
+
+        try{
+            request = HttpRequest.newBuilder(new URI(resource)).header("Content-type","application/java")
+                    .GET().build();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            response = cliente.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return response.body();
+
+    }
+    
     //declaramos las variables final para el proyecto
     final VerticalLayout layout;
     final Tab pestañaUser;
@@ -206,13 +307,34 @@ public class MainView extends VerticalLayout {
 
     public MainView() {
 
+
         this.filtros = new TextField();
+        //objetos inciales
+        //Inicializamos una llamada para coger los prestamos y meterlos en un array
+        VerticalLayout totalayout = new VerticalLayout();
+        String prestamosarray = GetPrestamos();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        ArrayList<Prestamos> prestamos;
+        Type listaprestamos = new TypeToken<ArrayList<Prestamos>>(){}.getType();
+        prestamos = gson.fromJson(prestamosarray, listaprestamos);
+
+
+
         //Inicializamos una llamada para coger los usuarios y meterlos en un array
         String usuariosarray = Getusers();
         Gson gson2 = new GsonBuilder().setPrettyPrinting().create();
         ArrayList<Usuarios> users;
         Type listausers = new TypeToken<ArrayList<Usuarios>>(){}.getType();
         users = gson2.fromJson(usuariosarray, listausers);
+
+
+        //inicializamos la llamada para los equipos
+        String arayequipos = GetEquipos();
+        Gson gson3 = new GsonBuilder().setPrettyPrinting().create();
+        ArrayList<Equipos> equipos;
+        Type listaequipos = new TypeToken<ArrayList<Equipos>>(){}.getType();
+        equipos = gson3.fromJson(arayequipos, listaequipos);
+
 
 
         //INICIO LAYOUT USUARIOS
@@ -305,6 +427,9 @@ public class MainView extends VerticalLayout {
 
 
 
+
+
+
         //INICIO LAYOUT EQUIPOS
 
         VerticalLayout VerticalEquipoLayout = new VerticalLayout();
@@ -343,6 +468,12 @@ public class MainView extends VerticalLayout {
         divEquipos.getStyle().set("flex-wrap", "wrap");
 
         //FIN LAYOUT EQUIPOS
+
+
+
+
+
+
 
 
 
@@ -398,7 +529,6 @@ public class MainView extends VerticalLayout {
 
 
         //FIN LAYOUT PRESTAMOS
-
 
 
 
@@ -509,6 +639,45 @@ public class MainView extends VerticalLayout {
         }
     }
 
+
+    private static VerticalLayout createDialogPrestamoLayout() {
+
+        //Definicion de los textfield
+        AtomicInteger id_prestamo = new AtomicInteger();
+        TextField usuario = new TextField("Usuario_Id");
+        TextField equipo = new TextField("Equipo id");
+        /*ComboBox<Usuarios> combox1 = new ComboBox<>("Usuarios");
+        ComboBox<Equipos> combox2 = new ComboBox<>("Equipos");
+        List<Integer> idUserUsuarios = new ArrayList<Integer>();
+        List<Integer> idUserEquipos = new ArrayList<Integer>();
+        for(Usuarios user : usuarios){
+
+            idUserUsuarios.add(user.getId());
+
+        }
+        for(int i = 0; i<usuarios.size(); i++){
+
+            Usuarios index = usuarios.get(0);
+            idUserUsuarios.add(index.getId());
+        }
+        combox1.setItems((Usuarios) idUserUsuarios);
+        combox2.setItems((Equipos) idUserEquipos);
+        */
+        TextField fechaIni = new TextField("Fecha Inicio");
+        TextField fechaFin = new TextField("Fecha fin ");
+        TextField comentarios = new TextField("Comentarios");
+
+        VerticalLayout dialogLayout = new VerticalLayout(usuario,equipo,
+                fechaIni,fechaFin, comentarios);
+        dialogLayout.setPadding(false);
+        dialogLayout.setSpacing(false);
+        dialogLayout.setAlignItems(FlexComponent.Alignment.STRETCH);
+        dialogLayout.getStyle().set("width", "18rem").set("max-width", "100%");
+
+        return dialogLayout;
+    }
+
+
     //Funcion modalinfo para mostrar la informacion del usuario
     private void modalinfo(Usuarios user){
         try {
@@ -545,6 +714,7 @@ public class MainView extends VerticalLayout {
             e.printStackTrace();
         }
     }
+
 
     //MOdal para modificar un usuario
     private void editarmodaluser(Usuarios user){
@@ -622,9 +792,9 @@ public class MainView extends VerticalLayout {
         //creamos el boton de aceptar
         Button aceptar = new Button("Añadir", event -> {
 
-            int id = idusuario.intValue();
+            //int id = idusuario.intValue();
 
-            Usuarios user = new Usuarios(id,Nombre.getValue(),Departamento.getValue(),Ubicacion.getValue(),telefono.getValue(),email.getValue());
+            Usuarios user = new Usuarios(id_user,Nombre.getValue(),Departamento.getValue(),Ubicacion.getValue(),telefono.getValue(),email.getValue());
             //crearUser(user);
 
             user.setId(idusuario.getAndIncrement());
@@ -650,6 +820,17 @@ public class MainView extends VerticalLayout {
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
 
 
     //METODOS PARA LA PESTAÑA DE PRESTAMOS
@@ -801,7 +982,7 @@ public class MainView extends VerticalLayout {
 
         //nos creamos el boton de aceptar para confirmar el nuevo prestamo
         Button aceptar = new Button("Añadir",event -> {
-            Prestamos prestamo = new Prestamos(4,usuarios.getValue(),id_Equipo.getValue(),fechaIni.getValue(),fechaFin.getValue(),fechaReal.getValue(),comentarios.getValue());
+            Prestamos prestamo = new Prestamos(id_prestamo,usuarios.getValue(),id_Equipo.getValue(),fechaIni.getValue(),fechaFin.getValue(),fechaReal.getValue(),comentarios.getValue());
 
             prestamo.setUsuario_Id(usuarios.getValue());
             prestamo.setEquipo_Id(id_Equipo.getValue());
@@ -826,6 +1007,7 @@ public class MainView extends VerticalLayout {
         dialog.open();
 
     }
+
 
     //modal info de los equipos
     void modalinfoEquipos(Equipos equipos){
@@ -877,6 +1059,7 @@ public class MainView extends VerticalLayout {
             e.printStackTrace();
         }
     }
+
 
 
 
