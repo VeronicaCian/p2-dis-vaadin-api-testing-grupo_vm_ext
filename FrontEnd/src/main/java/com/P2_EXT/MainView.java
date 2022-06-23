@@ -31,12 +31,18 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.router.Route;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
+<<<<<<< HEAD
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
+=======
+import java.net.URI;
+import java.net.URISyntaxException;
+>>>>>>> metodosprestamos
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
@@ -51,6 +57,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @PWA(name = "My Application", shortName = "My Application")
 public class MainView extends VerticalLayout {
 
+<<<<<<< HEAD
     private static final String URL = "http://localhost:8081/api/%s";
     private static final String URL2 = "http://localhost:8081/api/%s/%d";
     //private static HttpRequest request;
@@ -88,6 +95,12 @@ public class MainView extends VerticalLayout {
     //metodo para trar desde el backend los usuarios
     private String Getuser(String name){
         String resource = String.format(URL2, "usuarios", name);
+=======
+    //metodo para trar desde el backend los prestamos
+    private String GetPrestamos(){
+        String resource = String.format(URL, "prestamos");
+
+>>>>>>> metodosprestamos
 
         try{
             request = HttpRequest.newBuilder(new URI(resource)).header("Content-type","application/java")
@@ -112,11 +125,18 @@ public class MainView extends VerticalLayout {
 
 
 
+<<<<<<< HEAD
 
     public  String crearUser(Usuarios newUser){
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String string = gson.toJson(newUser, Usuarios.class);
         String resource = String.format(URL, "usuario");
+=======
+    public  String crearPrestamo(Prestamos prestamo){
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String string = gson.toJson(prestamo, Prestamos.class);
+        String resource = String.format(URL, "prestamo");
+>>>>>>> metodosprestamos
 
 
 
@@ -142,6 +162,7 @@ public class MainView extends VerticalLayout {
 
 
 
+<<<<<<< HEAD
 
     private String modificarUser(Usuarios userModified){
 
@@ -193,6 +214,8 @@ public class MainView extends VerticalLayout {
     }
 
 
+=======
+>>>>>>> metodosprestamos
 
     //declaramos las variables final para el proyecto
     final VerticalLayout layout;
@@ -214,6 +237,15 @@ public class MainView extends VerticalLayout {
         Type listausers = new TypeToken<ArrayList<Usuarios>>(){}.getType();
         users = gson2.fromJson(usuariosarray, listausers);
 
+
+        //objetos inciales
+        //Inicializamos una llamada para coger los prestamos y meterlos en un array
+        VerticalLayout totalayout = new VerticalLayout();
+        String prestamosarray = GetPrestamos();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        ArrayList<Prestamos> prestamos;
+        Type listaprestamos = new TypeToken<ArrayList<Prestamos>>(){}.getType();
+        prestamos = gson.fromJson(prestamosarray, listaprestamos);
 
         //INICIO LAYOUT USUARIOS
 
