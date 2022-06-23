@@ -19,6 +19,9 @@ public class Hardware {
     @JsonProperty("Pantalla")
     public Pantalla Pantalla;
 
+    public Hardware(){
+
+    }
 
     public Hardware(String procesador, double memoria, Disco_Duro discoduro, Pantalla pantalla){
         this.Pantalla = pantalla;
