@@ -797,7 +797,7 @@ public class MainView extends VerticalLayout {
             Usuarios user = new Usuarios(id_user,Nombre.getValue(),Departamento.getValue(),Ubicacion.getValue(),telefono.getValue(),email.getValue());
             //crearUser(user);
 
-            user.setId(idusuario.getAndIncrement());
+            user.setId(id_user);
             user.setNombre(Nombre.getValue());
             user.setDepartamento(Departamento.getValue());
             user.setUbicacion(Ubicacion.getValue());
@@ -984,6 +984,7 @@ public class MainView extends VerticalLayout {
         Button aceptar = new Button("Añadir",event -> {
             Prestamos prestamo = new Prestamos(id_prestamo,usuarios.getValue(),id_Equipo.getValue(),fechaIni.getValue(),fechaFin.getValue(),fechaReal.getValue(),comentarios.getValue());
 
+            prestamo.setId(id_prestamo);
             prestamo.setUsuario_Id(usuarios.getValue());
             prestamo.setEquipo_Id(id_Equipo.getValue());
             prestamo.setFecha_Inicio_Prestamo(fechaIni.getValue());
