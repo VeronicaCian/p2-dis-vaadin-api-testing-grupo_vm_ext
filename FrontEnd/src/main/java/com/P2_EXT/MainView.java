@@ -339,6 +339,57 @@ public class MainView extends VerticalLayout {
 
     }
 
+    //nuev modal para crear un usuario
+    void nuevoModalUser(){
+        Dialog dialog = new Dialog(); //instaciamos un nuevo dialogo
+
+        //nos declaramos los campos del formulario necesarios para crear un nuevo usuario
+
+        AtomicInteger idusuario = new AtomicInteger();
+        TextField Nombre = new TextField("Nombre");
+        dialog.add(new HorizontalLayout(Nombre));
+        TextField Departamento = new TextField("Departamento");
+        dialog.add(new HorizontalLayout(Departamento));
+        TextField Ubicacion = new TextField("Ubicacion");
+        dialog.add(new HorizontalLayout(Ubicacion));
+        IntegerField telefono = new IntegerField("telefono");
+        dialog.add(new HorizontalLayout(telefono));
+        TextField email = new TextField("email");
+        dialog.add(new HorizontalLayout(email));
+
+        //creamos el boton de aceptar
+        Button aceptar = new Button("Añadir", event -> {
+
+            int id = idusuario.intValue();
+
+            Usuarios user = new Usuarios(id,Nombre.getValue(),Departamento.getValue(),Ubicacion.getValue(),telefono.getValue(),email.getValue());
+            //crearUser(user);
+
+            user.setId(idusuario.getAndIncrement());
+            user.setNombre(Nombre.getValue());
+            user.setDepartamento(Departamento.getValue());
+            user.setUbicacion(Ubicacion.getValue());
+            //user.setTelefono(Integer.parseInt(telefono.getValue()));
+            user.setTelefono(telefono.getValue());
+            user.setEmail(email.getValue());
+
+            crearUser(user);
+            UI.getCurrent().getPage().reload();
+            dialog.close();
+        });
+
+        Button cancelar = new Button("Cancelar", event2 ->{
+            dialog.close();
+        });
+
+        HorizontalLayout opciones = new HorizontalLayout(aceptar,cancelar);
+        dialog.add(opciones);
+        dialog.open();
+
+
+    }
+
+
 
 
 }
