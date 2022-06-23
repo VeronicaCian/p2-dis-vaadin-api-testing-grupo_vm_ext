@@ -1,59 +1,26 @@
 [
   {
     "id": 1,
-    "Nombre": "Miguel",
-
-    "Departamento": "Informatica",
-    "Ubicacion": "Madrid",
-    "telefono": 603404703,
-    "email": "salasrmcf1997@gmail.com"
-  },
-  {
-    "id": 1,
-    "Nombre": "Miguel",
+    "Nombre": "Ramon",
     "Departamento": "Contabilidad",
     "Ubicacion": "Pozuelo",
     "telefono": 638424986,
     "email": "pabloufv@gmail.com"
   },
   {
-    "id": 0,
-    "telefono": 0
-  },
-  {
-    "id": 1,
-    "telefono": 0
-  },
-  {
     "id": 2,
-    "Nombre": "Lucia",
-    "Departamento": "Publicidad",
-    "Ubicacion": "Pozuelo",
-    "telefono": 638054986,
-    "email": "luciaufv@gmail.com"
-  },
-  {
-    "id": 3,
-    "telefono": 0
-  },
-  {
-    "id": 4,
-    "telefono": 0
-  },
-  {
-    "id": 5,
-    "telefono": 0
-  },
-  {
-    "id": 0,
-    "telefono": 0
-  },
-  {
-    "id": 0,
-    "Nombre": "Carlos",
-    "Departamento": "marketing",
+    "Nombre": "Miguel",
+    "Departamento": "Informatica",
     "Ubicacion": "Madrid",
-    "telefono": 525968742,
-    "email": "carlosII@gmail.com"
+    "telefono": 603475803,
+    "email": "miguelufv@gmail.com"
+  },
+  {
+    "id": 53,
+    "Nombre": "Lucia",
+    "Departamento": "informatica",
+    "Ubicacion": "pozuelo",
+    "telefono": 685204423,
+    "email": "luciaufv@gmail.com"
   }
 ]

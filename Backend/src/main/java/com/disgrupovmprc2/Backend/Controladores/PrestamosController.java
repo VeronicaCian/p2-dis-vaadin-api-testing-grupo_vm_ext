@@ -46,7 +46,7 @@ public class PrestamosController {
         //Instanciamos una nueva lectura dle JSON
         ArrayList<Prestamos> arrayprestamos = utils.lecturaJSONPrestamos();
 
-        prestamos.setId(this.nuevoID.getAndIncrement());            //Incrementamos el id para este nuevo prestamo
+        //prestamos.setId(this.nuevoID.getAndIncrement());            //Incrementamos el id para este nuevo prestamo
         arrayprestamos.add(prestamos);                              //Añadimos este nuevo prestamo al array
 
         //Modificamos el json con este nuevo prestamo
