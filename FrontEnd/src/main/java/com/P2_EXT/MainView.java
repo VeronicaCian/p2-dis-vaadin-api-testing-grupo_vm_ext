@@ -30,7 +30,12 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.router.Route;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,6 +47,63 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Route
 @PWA(name = "My Application", shortName = "My Application")
 public class MainView extends VerticalLayout {
+
+    //metodo para trar desde el backend los prestamos
+    private String GetPrestamos(){
+        String resource = String.format(URL, "prestamos");
+
+
+        try{
+            request = HttpRequest.newBuilder(new URI(resource)).header("Content-type","application/java")
+                    .GET().build();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            response = cliente.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return response.body();
+
+    }
+
+
+
+
+
+    public  String crearPrestamo(Prestamos prestamo){
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String string = gson.toJson(prestamo, Prestamos.class);
+        String resource = String.format(URL, "prestamo");
+
+
+
+        try{
+            request = HttpRequest.newBuilder(new URI(resource)).header("Content-type","application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(string)).build();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            response = cliente.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        return response.body();
+
+    }
+
+
 
 
     //declaramos las variables final para el proyecto
@@ -57,6 +119,15 @@ public class MainView extends VerticalLayout {
     public MainView() {
 
         this.filtros = new TextField();
+
+        //objetos inciales
+        //Inicializamos una llamada para coger los prestamos y meterlos en un array
+        VerticalLayout totalayout = new VerticalLayout();
+        String prestamosarray = GetPrestamos();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        ArrayList<Prestamos> prestamos;
+        Type listaprestamos = new TypeToken<ArrayList<Prestamos>>(){}.getType();
+        prestamos = gson.fromJson(prestamosarray, listaprestamos);
 
         //INICIO LAYOUT USUARIOS
 
