@@ -33,16 +33,16 @@ import com.vaadin.flow.router.Route;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
-<<<<<<< HEAD
+
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
-=======
+
 import java.net.URI;
 import java.net.URISyntaxException;
->>>>>>> metodosprestamos
+
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
@@ -57,7 +57,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @PWA(name = "My Application", shortName = "My Application")
 public class MainView extends VerticalLayout {
 
-<<<<<<< HEAD
+
     private static final String URL = "http://localhost:8081/api/%s";
     private static final String URL2 = "http://localhost:8081/api/%s/%d";
     //private static HttpRequest request;
@@ -95,12 +95,6 @@ public class MainView extends VerticalLayout {
     //metodo para trar desde el backend los usuarios
     private String Getuser(String name){
         String resource = String.format(URL2, "usuarios", name);
-=======
-    //metodo para trar desde el backend los prestamos
-    private String GetPrestamos(){
-        String resource = String.format(URL, "prestamos");
-
->>>>>>> metodosprestamos
 
         try{
             request = HttpRequest.newBuilder(new URI(resource)).header("Content-type","application/java")
@@ -125,18 +119,11 @@ public class MainView extends VerticalLayout {
 
 
 
-<<<<<<< HEAD
 
     public  String crearUser(Usuarios newUser){
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String string = gson.toJson(newUser, Usuarios.class);
         String resource = String.format(URL, "usuario");
-=======
-    public  String crearPrestamo(Prestamos prestamo){
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String string = gson.toJson(prestamo, Prestamos.class);
-        String resource = String.format(URL, "prestamo");
->>>>>>> metodosprestamos
 
 
 
@@ -162,7 +149,6 @@ public class MainView extends VerticalLayout {
 
 
 
-<<<<<<< HEAD
 
     private String modificarUser(Usuarios userModified){
 
@@ -214,8 +200,97 @@ public class MainView extends VerticalLayout {
     }
 
 
-=======
->>>>>>> metodosprestamos
+
+
+
+
+
+    //metodo para trar desde el backend los prestamos
+    private String GetPrestamos(){
+        String resource = String.format(URL, "prestamos");
+
+
+        try{
+            request = HttpRequest.newBuilder(new URI(resource)).header("Content-type","application/java")
+                    .GET().build();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            response = cliente.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return response.body();
+
+    }
+
+
+
+
+
+    public  String crearPrestamo(Prestamos prestamo){
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String string = gson.toJson(prestamo, Prestamos.class);
+        String resource = String.format(URL, "prestamo");
+
+
+
+        try{
+            request = HttpRequest.newBuilder(new URI(resource)).header("Content-type","application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(string)).build();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            response = cliente.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        return response.body();
+
+    }
+
+
+
+
+    //metodo para trar desde el backend los prestamos
+    private String GetEquipos(){
+        String resource = String.format(URL, "equipos");
+
+
+        try{
+            request = HttpRequest.newBuilder(new URI(resource)).header("Content-type","application/java")
+                    .GET().build();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            response = cliente.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return response.body();
+
+    }
+
+
+
+
+
 
     //declaramos las variables final para el proyecto
     final VerticalLayout layout;
@@ -229,15 +304,8 @@ public class MainView extends VerticalLayout {
 
     public MainView() {
 
+
         this.filtros = new TextField();
-        //Inicializamos una llamada para coger los usuarios y meterlos en un array
-        String usuariosarray = Getusers();
-        Gson gson2 = new GsonBuilder().setPrettyPrinting().create();
-        ArrayList<Usuarios> users;
-        Type listausers = new TypeToken<ArrayList<Usuarios>>(){}.getType();
-        users = gson2.fromJson(usuariosarray, listausers);
-
-
         //objetos inciales
         //Inicializamos una llamada para coger los prestamos y meterlos en un array
         VerticalLayout totalayout = new VerticalLayout();
@@ -246,6 +314,25 @@ public class MainView extends VerticalLayout {
         ArrayList<Prestamos> prestamos;
         Type listaprestamos = new TypeToken<ArrayList<Prestamos>>(){}.getType();
         prestamos = gson.fromJson(prestamosarray, listaprestamos);
+
+
+
+        //Inicializamos una llamada para coger los usuarios y meterlos en un array
+        String usuariosarray = Getusers();
+        Gson gson2 = new GsonBuilder().setPrettyPrinting().create();
+        ArrayList<Usuarios> users;
+        Type listausers = new TypeToken<ArrayList<Usuarios>>(){}.getType();
+        users = gson2.fromJson(usuariosarray, listausers);
+
+
+        //inicializamos la llamada para los equipos
+        String arayequipos = GetEquipos();
+        Gson gson3 = new GsonBuilder().setPrettyPrinting().create();
+        ArrayList<Equipos> equipos;
+        Type listaequipos = new TypeToken<ArrayList<Equipos>>(){}.getType();
+        equipos = gson3.fromJson(arayequipos, listaequipos);
+
+
 
         //INICIO LAYOUT USUARIOS
 
@@ -337,6 +424,9 @@ public class MainView extends VerticalLayout {
 
 
 
+
+
+
         //INICIO LAYOUT EQUIPOS
 
         VerticalLayout VerticalEquipoLayout = new VerticalLayout();
@@ -375,6 +465,12 @@ public class MainView extends VerticalLayout {
         divEquipos.getStyle().set("flex-wrap", "wrap");
 
         //FIN LAYOUT EQUIPOS
+
+
+
+
+
+
 
 
 
@@ -430,7 +526,6 @@ public class MainView extends VerticalLayout {
 
 
         //FIN LAYOUT PRESTAMOS
-
 
 
 
@@ -541,6 +636,45 @@ public class MainView extends VerticalLayout {
         }
     }
 
+
+    private static VerticalLayout createDialogPrestamoLayout() {
+
+        //Definicion de los textfield
+        AtomicInteger id_prestamo = new AtomicInteger();
+        TextField usuario = new TextField("Usuario_Id");
+        TextField equipo = new TextField("Equipo id");
+        /*ComboBox<Usuarios> combox1 = new ComboBox<>("Usuarios");
+        ComboBox<Equipos> combox2 = new ComboBox<>("Equipos");
+        List<Integer> idUserUsuarios = new ArrayList<Integer>();
+        List<Integer> idUserEquipos = new ArrayList<Integer>();
+        for(Usuarios user : usuarios){
+
+            idUserUsuarios.add(user.getId());
+
+        }
+        for(int i = 0; i<usuarios.size(); i++){
+
+            Usuarios index = usuarios.get(0);
+            idUserUsuarios.add(index.getId());
+        }
+        combox1.setItems((Usuarios) idUserUsuarios);
+        combox2.setItems((Equipos) idUserEquipos);
+        */
+        TextField fechaIni = new TextField("Fecha Inicio");
+        TextField fechaFin = new TextField("Fecha fin ");
+        TextField comentarios = new TextField("Comentarios");
+
+        VerticalLayout dialogLayout = new VerticalLayout(usuario,equipo,
+                fechaIni,fechaFin, comentarios);
+        dialogLayout.setPadding(false);
+        dialogLayout.setSpacing(false);
+        dialogLayout.setAlignItems(FlexComponent.Alignment.STRETCH);
+        dialogLayout.getStyle().set("width", "18rem").set("max-width", "100%");
+
+        return dialogLayout;
+    }
+
+
     //Funcion modalinfo para mostrar la informacion del usuario
     private void modalinfo(Usuarios user){
         try {
@@ -577,6 +711,7 @@ public class MainView extends VerticalLayout {
             e.printStackTrace();
         }
     }
+
 
     //MOdal para modificar un usuario
     private void editarmodaluser(Usuarios user){
@@ -682,6 +817,17 @@ public class MainView extends VerticalLayout {
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
 
 
     //METODOS PARA LA PESTAÑA DE PRESTAMOS
@@ -859,6 +1005,7 @@ public class MainView extends VerticalLayout {
 
     }
 
+
     //modal info de los equipos
     void modalinfoEquipos(Equipos equipos){
 
@@ -909,6 +1056,7 @@ public class MainView extends VerticalLayout {
             e.printStackTrace();
         }
     }
+
 
 
 
