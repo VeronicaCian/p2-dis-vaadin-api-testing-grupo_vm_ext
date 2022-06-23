@@ -1,5 +1,6 @@
 package com.P2_EXT;
 
+import com.P2_EXT.Clases.Usuarios;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.Text;
@@ -281,6 +282,61 @@ public class MainView extends VerticalLayout {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    //MOdal para modificar un usuario
+    private void editarmodaluser(Usuarios user){
+
+        Dialog dialog = new Dialog(); //nos creamos un nuevo dialog para el formulario de mdificar el usuario
+        dialog.setCloseOnOutsideClick(false);
+        dialog.setCloseOnEsc(false);
+
+        //Declaramos los campos que van a aparecer para editar el modal
+        //lo campos son los declrados anteriormente
+        //usamos TextField
+
+        TextField Nombre = new TextField("Nombre");
+        Nombre.setValue(user.getNombre());
+        dialog.add(new HorizontalLayout(Nombre));
+        TextField Departamento = new TextField("Departamento");
+        Departamento.setValue(user.getDepartamento());
+        dialog.add(new HorizontalLayout(Departamento));
+        TextField Ubicacion = new TextField("Ubicacion");
+        Ubicacion.setValue(user.getUbicacion());
+        dialog.add(new HorizontalLayout(Ubicacion));
+        TextField telefono = new TextField("Telefono");
+        telefono.setValue(String.valueOf(user.getTelefono()));
+        dialog.add(new HorizontalLayout(telefono));
+        TextField email = new TextField("email");
+        email.setValue(user.getEmail());
+        dialog.add(new HorizontalLayout(email));
+
+
+        //creamos el boton de aceptar para modificar el usuario
+
+        Button aceptar = new Button("Confirmar", e -> {
+
+            user.setNombre(Nombre.getValue());
+            user.setDepartamento(Departamento.getValue());
+            user.setUbicacion(Ubicacion.getValue());
+            user.setTelefono(Integer.parseInt(telefono.getValue()));
+            user.setEmail(email.getValue());
+
+            //guardamos los cambios
+            //LLAMADA A FUNCION DE PUT como modificaUser(user)
+            modificarUser(user);
+            UI.getCurrent().getPage().reload();
+            dialog.close();
+
+        });
+
+        //cremoa un boton de abortar o cancelar y los añadirmos al layout
+        Button cancelar = new Button("Cancelar", event -> { dialog.close(); });
+        HorizontalLayout opt = new HorizontalLayout(aceptar, cancelar);
+        dialog.add(opt);
+        //abrimos el modal
+        dialog.open();
+
     }
 
 
