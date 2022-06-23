@@ -449,6 +449,44 @@ public class MainView extends VerticalLayout {
     }
 
 
+    //METODOS PARA LA PESTAÑA DE PRESTAMOS
+
+    //modal iinformacion cuando el usuario quiere ver info de un prestamos
+    private void modalinfoPrestamo(Prestamos prestamo){
+
+        try{
+            //nos generemos un nuevo dialogo
+            Dialog dialogo = new Dialog();
+            dialogo.setCloseOnEsc(false);
+            dialogo.setCloseOnOutsideClick(false);
+
+            //ponemos en el layout los textfields que vamos a usar
+            dialogo.add(new HorizontalLayout(new Html("<b>id Usuario: </b>"), new Text(String.valueOf(prestamo.getUsuario_Id()))));
+            dialogo.add(new HorizontalLayout(new Html("<b>id Equipo: </b>"), new Text(String.valueOf(prestamo.getEquipo_Id()))));
+            dialogo.add(new HorizontalLayout(new Html("<b>Fecha Inicio Prestamo: </b>"),new Text(prestamo.getFecha_Inicio_Prestamo())));
+            dialogo.add(new HorizontalLayout(new Html("<b>Fecha Fin prestamos: </b>"),new Text(prestamo.getFecha_Fin_Prestamo())));
+            dialogo.add(new HorizontalLayout(new Html("<b>Fecha Real dev: </b>"),new Text(prestamo.getFecha_Real_Dev())));
+            dialogo.add(new HorizontalLayout(new Html("<b>Comentarios: </b>"),new Text(prestamo.getComentarios())));
+
+            Button modificarprestamo = new Button("Editar", event -> {dialogo.close(); editarmodalPrestamo(prestamo);});
+            Button deleteprestamo = new Button("Eliminar");
+            Button cancelButton = new Button("Cancelar", event -> { dialogo.close(); });
+            HorizontalLayout actions2 = new HorizontalLayout(modificarprestamo, cancelButton,deleteprestamo);
+            dialogo.add(actions2);
+            dialogo.open();
+
+            //estilo para el boton de eliminar --> rojo
+            deleteprestamo.addThemeVariants(ButtonVariant.LUMO_PRIMARY,ButtonVariant.LUMO_ERROR);
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 
 
 }
