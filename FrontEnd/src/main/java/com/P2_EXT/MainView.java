@@ -294,12 +294,7 @@ public class MainView extends VerticalLayout {
         return response.body();
 
     }
-
-
-
-
-
-
+    
     //declaramos las variables final para el proyecto
     final VerticalLayout layout;
     final Tab pestañaUser;
