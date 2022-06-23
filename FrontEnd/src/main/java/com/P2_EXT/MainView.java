@@ -2,12 +2,16 @@ package com.P2_EXT;
 
 import com.P2_EXT.Clases.Prestamos;
 import com.P2_EXT.Clases.Usuarios;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
@@ -26,6 +30,8 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.router.Route;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -537,6 +543,90 @@ public class MainView extends VerticalLayout {
         //abrimos el modal
         dialogo.open();
 
+
+    }
+
+
+    //modal para un nuevo prestamos
+    void nuevoModalPrestamo(){
+
+        Dialog dialog = new Dialog();
+
+
+        //Inicializamos una llamada para coger los usuarios y meterlos en un array
+        String usuariosarray = Getusers();
+        Gson gson2 = new GsonBuilder().setPrettyPrinting().create();
+        ArrayList<Usuarios> users;
+        Type listausers = new TypeToken<ArrayList<Usuarios>>(){}.getType();
+        users = gson2.fromJson(usuariosarray, listausers);
+
+        //Inicializamos una llamada para coger los usuarios y meterlos en un array
+        String equiposarray = GetEquipos();
+        ArrayList<Equipos> equipo;
+        Type listaequipo = new TypeToken<ArrayList<Usuarios>>(){}.getType();
+        equipo = gson2.fromJson(equiposarray, listaequipo);
+
+        //nos creamos un array de usuarios para introducir los id
+        ArrayList<Integer> usersid = new ArrayList<Integer>();
+        ComboBox<Integer> usuarios = new ComboBox<Integer>("Usuarios");
+
+        ArrayList<Integer> equipoid = new ArrayList<>();
+        ComboBox<Integer> equipos = new ComboBox<>("Equipos");
+
+        dialog.add(new HorizontalLayout(usuarios));
+        //dialog.add(new HorizontalLayout(equipos));
+        //nos creamos los diferentes textfields para ingresar los datos
+        IntegerField id_Equipo = new IntegerField("ID Equipo");
+        dialog.add(new HorizontalLayout(id_Equipo));
+        //IntegerField id_Usuario = new IntegerField("ID Usuario");
+        //dialog.add(new HorizontalLayout(id_Usuario));
+        TextField fechaIni = new TextField("Fecha Inicio Prestamo");
+        dialog.add(new HorizontalLayout(fechaIni));
+        TextField fechaFin = new TextField("Fecha Fin Prestamo");
+        dialog.add(new HorizontalLayout(fechaFin));
+        TextField fechaReal = new TextField("Fecha Real Devlucion");
+        dialog.add(new HorizontalLayout(fechaReal));
+        TextField comentarios = new TextField("comentarios");
+        dialog.add(new HorizontalLayout(comentarios));
+
+
+        for(Usuarios u : users){
+
+            usersid.add(u.getId());
+        }
+        usuarios.setItems(usersid);
+
+        //for(Equipos e : equipo){
+        //equipoid.add(e.getIdEquipo());
+        //}
+        //equipos.setItems(equipoid);
+
+
+        //nos creamos el boton de aceptar para confirmar el nuevo prestamo
+        Button aceptar = new Button("Añadir",event -> {
+            Prestamos prestamo = new Prestamos(4,usuarios.getValue(),id_Equipo.getValue(),fechaIni.getValue(),fechaFin.getValue(),fechaReal.getValue(),comentarios.getValue());
+
+            prestamo.setUsuario_Id(usuarios.getValue());
+            prestamo.setEquipo_Id(id_Equipo.getValue());
+            prestamo.setFecha_Inicio_Prestamo(fechaIni.getValue());
+            prestamo.setFecha_Fin_Prestamo(fechaFin.getValue());
+            prestamo.setFecha_Real_Dev(fechaReal.getValue());
+            prestamo.setComentarios(comentarios.getValue());
+
+            crearPrestamo(prestamo);
+            UI.getCurrent().getPage().reload();
+            dialog.close();
+
+
+        });
+
+        Button cancelar = new Button("Cancelar", event2 ->{
+            dialog.close();
+        });
+
+        HorizontalLayout opciones = new HorizontalLayout(aceptar,cancelar);
+        dialog.add(opciones);
+        dialog.open();
 
     }
 
