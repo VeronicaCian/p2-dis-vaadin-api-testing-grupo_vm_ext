@@ -2,17 +2,11 @@
   {
     "id": 1,
     "Nombre": "Miguel",
-<<<<<<< HEAD
+
     "Departamento": "Informatica",
     "Ubicacion": "Madrid",
     "telefono": 603404703,
     "email": "salasrmcf1997@gmail.com"
-=======
-    "Departamento": "Contabilidad",
-    "Ubicacion": "Pozuelo",
-    "telefono": 638424986,
-    "email": "pabloufv@gmail.com"
->>>>>>> a2d6793c624b984749868b31ae98c183975ab155
   },
   {
     "id": 1,
@@ -24,7 +18,6 @@
   },
   {
     "id": 0,
-<<<<<<< HEAD
     "telefono": 0
   },
   {
@@ -62,12 +55,5 @@
     "Ubicacion": "Madrid",
     "telefono": 525968742,
     "email": "carlosII@gmail.com"
-=======
-    "Nombre": "Lucia",
-    "Departamento": "Informatica",
-    "Ubicacion": "Madrid",
-    "telefono": 698745258,
-    "email": "luciaufv@gmail.com"
->>>>>>> a2d6793c624b984749868b31ae98c183975ab155
   }
 ]
