@@ -1,9 +1,9 @@
 {
   "compatibilityMode": false,
   "productionMode": false,
-  "npmFolder": "C:\\Users\\USUARIO\\Desktop\\P2-FINAL-EXT\\FrontEnd",
-  "generatedFolder": "C:\\Users\\USUARIO\\Desktop\\P2-FINAL-EXT\\FrontEnd\\target\\frontend",
-  "frontendFolder": "C:\\Users\\USUARIO\\Desktop\\P2-FINAL-EXT\\FrontEnd\\frontend",
+  "npmFolder": "C:\\Users\\Veronica\\Desktop\\Universidad\\PLAN18\\Tercero\\DIS\\Extraordinaria\\PRC2\\p2-dis-vaadin-api-testing-grupo_vm_ext\\FrontEnd",
+  "generatedFolder": "C:\\Users\\Veronica\\Desktop\\Universidad\\PLAN18\\Tercero\\DIS\\Extraordinaria\\PRC2\\p2-dis-vaadin-api-testing-grupo_vm_ext\\FrontEnd\\target\\frontend",
+  "frontendFolder": "C:\\Users\\Veronica\\Desktop\\Universidad\\PLAN18\\Tercero\\DIS\\Extraordinaria\\PRC2\\p2-dis-vaadin-api-testing-grupo_vm_ext\\FrontEnd\\frontend",
   "pnpm.enable": false,
   "require.home.node": false
 }

@@ -853,15 +853,10 @@ public class MainView extends VerticalLayout {
             dialogo.add(new HorizontalLayout(new Html("<b>Comentarios: </b>"),new Text(prestamo.getComentarios())));
 
             Button modificarprestamo = new Button("Editar", event -> {dialogo.close(); editarmodalPrestamo(prestamo);});
-            Button deleteprestamo = new Button("Eliminar");
             Button cancelButton = new Button("Cancelar", event -> { dialogo.close(); });
-            HorizontalLayout actions2 = new HorizontalLayout(modificarprestamo, cancelButton,deleteprestamo);
+            HorizontalLayout actions2 = new HorizontalLayout(modificarprestamo, cancelButton);
             dialogo.add(actions2);
             dialogo.open();
-
-            //estilo para el boton de eliminar --> rojo
-            deleteprestamo.addThemeVariants(ButtonVariant.LUMO_PRIMARY,ButtonVariant.LUMO_ERROR);
-
 
 
         } catch (Exception e) {
