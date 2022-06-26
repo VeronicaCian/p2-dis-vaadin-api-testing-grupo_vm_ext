@@ -20,6 +20,7 @@ public class Licencia_Pago {
 
     }
 
+    
     public Licencia_Pago(String nombreSP, String versionSP,String tipoSP){
         this.VersionSP = versionSP;
         this.NombreSP = nombreSP;
